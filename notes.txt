@@ -1,0 +1,56 @@
+print(tweet.id)
+print(tweet.created_at)
+print(tweet.text)
+print(tweet.user.id)
+print(tweet.user.name)
+print(tweet.user.screen_name)
+print(tweet.user.location)
+print(tweet.user.followers_count)
+print(tweet.user.created_at)
+print(tweet.user.geo_enabled)
+print(tweet.geo)
+print(tweet.coordinates)
+print(tweet.place)
+print(tweet.retweet_count)
+print(tweet.favorite_count)
+
+restrict by location
+no replies
+no retweets
+start and end date
+tweet needs extended mode
+Only get tweets with locations
+
+
+https://developer.twitter.com/en/docs/twitter-api/premium/rules-and-filtering/operators-by-product
+
+we can use place, place_country and some similar. There doesn't seem to be any way of filtering retweets or replies without being on a paid tier.
+This can be a city, or a country. We can also restrict the language down to restrict english inputs if we need that.
+We can set a start and end date.
+Full_text is stored differently for retweets and tweets so we could take all, or choose only original content. we would hit the same API limit though.
+
+Limit seems to be at 300 per 15 minutes.
+We can run this every 15 minutes with different locations, and different time periods. I would ask here does time periods give us much?
+
+Twarc
+
+twarc2 configure
+YYYY-MM-DD
+-is_retweet -RT
+https://twittercommunity.com/t/exclude-retweets-in-api-v2/156357/5
+
+twarc2 search --archive --limit 10 --max-results 10 --start-time "2016-05-01" --end-time "2016-05-30" "vegan place:London -is:retweet" data.jsonl
+twarc2 search --limit 10 --max-results 10  "vegan place:London -is:retweet " data.jsonl
+
+twarc2 flatten data.jsonl data-flat.jsonl
+
+pip install twarc-csv
+twarc2 csv data.jsonl data.csv
+
+The API itself delivers those tweets truncated, but you can find the full retweeted text inside the text field of the referenced_tweets object.
+
+
+https://github.com/alblaine/twarc-tutorial
+https://github.com/jeffcsauer/twarc-v2-tutorials/blob/master/twarc_fas.md
+https://data.page/json/csv
+https://github.com/pbinkley/twarc-report
