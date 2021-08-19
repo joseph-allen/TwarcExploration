@@ -39,13 +39,34 @@ YYYY-MM-DD
 -is_retweet -RT
 https://twittercommunity.com/t/exclude-retweets-in-api-v2/156357/5
 
-twarc2 search --archive --limit 10 --max-results 10 --start-time "2016-05-01" --end-time "2016-05-30" "vegan place:London -is:retweet" data.jsonl
-twarc2 search --limit 10 --max-results 10  "vegan place:London -is:retweet " data.jsonl
+twarc2 search --archive --max-results 100 --start-time "2019-01-01" --end-time "2019-01-3" "vegan OR plant-based OR plant based OR veganism -is:retweet --geocode 51.507351,-0.127758,10mi" data1.jsonl
 
-twarc2 flatten data.jsonl data-flat.jsonl
+twarc2 search --archive --limit 250 --max-results 100 --start-time "2019-01-01" --end-time "2019-01-3" "vegan OR plant-based OR plant based OR veganism --geocode 51.507351,-0.127758,10mi -is:retweet" data1.jsonl
+twarc2 search --archive --limit 250 --max-results 100 --start-time "2019-01-04" --end-time "2019-01-6" "vegan OR plant-based OR plant based OR veganism --geocode 51.507351,-0.127758,10mi -is:retweet" data2.jsonl
+twarc2 search --archive --limit 250 --max-results 100 --start-time "2019-01-07" --end-time "2019-01-9" "vegan OR plant-based OR plant based OR veganism --geocode 51.507351,-0.127758,10mi -is:retweet" data3.jsonl
+twarc2 search --archive --limit 250 --max-results 100 --start-time "2019-01-10" --end-time "2019-01-12" "vegan OR plant-based OR plant based OR veganism --geocode 51.507351,-0.127758,10mi -is:retweet" data4.jsonl
+twarc2 search --archive --limit 250 --max-results 100 --start-time "2019-01-13" --end-time "2019-01-15" "vegan OR plant-based OR plant based OR veganism --geocode 51.507351,-0.127758,10mi -is:retweet" data5.jsonl
+twarc2 search --archive --limit 250 --max-results 100 --start-time "2019-01-16" --end-time "2019-01-18" "vegan OR plant-based OR plant based OR veganism --geocode 51.507351,-0.127758,10mi -is:retweet" data6.jsonl
+twarc2 search --archive --limit 250 --max-results 100 --start-time "2019-01-19" --end-time "2019-01-21" "vegan OR plant-based OR plant based OR veganism --geocode 51.507351,-0.127758,10mi -is:retweet" data7.jsonl
+twarc2 search --archive --limit 250 --max-results 100 --start-time "2019-01-22" --end-time "2019-01-24" "vegan OR plant-based OR plant based OR veganism --geocode 51.507351,-0.127758,10mi -is:retweet" data8.jsonl
+twarc2 search --archive --limit 250 --max-results 100 --start-time "2019-01-25" --end-time "2019-01-27" "vegan OR plant-based OR plant based OR veganism --geocode 51.507351,-0.127758,10mi -is:retweet" data9.jsonl
+twarc2 search --archive --limit 250 --max-results 100 --start-time "2019-01-28" --end-time "2019-01-30" "vegan OR plant-based OR plant based OR veganism --geocode 51.507351,-0.127758,10mi -is:retweet" data10.jsonl
+
 
 pip install twarc-csv
 twarc2 csv data.jsonl data.csv
+
+twarc2 csv data1.jsonl data1.csv
+twarc2 csv data2.jsonl data2.csv
+twarc2 csv data3.jsonl data3.csv
+twarc2 csv data4.jsonl data4.csv
+twarc2 csv data5.jsonl data5.csv
+twarc2 csv data6.jsonl data6.csv
+twarc2 csv data7.jsonl data7.csv
+twarc2 csv data8.jsonl data8.csv
+twarc2 csv data9.jsonl data9.csv
+twarc2 csv data10.jsonl data10.csv
+
 
 The API itself delivers those tweets truncated, but you can find the full retweeted text inside the text field of the referenced_tweets object.
 
@@ -54,3 +75,8 @@ https://github.com/alblaine/twarc-tutorial
 https://github.com/jeffcsauer/twarc-v2-tutorials/blob/master/twarc_fas.md
 https://data.page/json/csv
 https://github.com/pbinkley/twarc-report
+
+Explore get old tweets
+https://pypi.org/project/GetOldTweets3/
+https://github.com/Mottl/GetOldTweets3/issues/98
+https://github.com/twitterdev/search-tweets-python
