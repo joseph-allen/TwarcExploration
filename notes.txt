@@ -67,6 +67,21 @@ twarc2 search --archive --limit 250 --max-results 100 --start-time "2019-01-22" 
 twarc2 search --archive --limit 250 --max-results 100 --start-time "2019-01-25" --end-time "2019-01-27" "vegan OR plant-based OR plant based OR veganism --geocode 51.507351,-0.127758,10mi -is:retweet" data9.jsonl
 twarc2 search --archive --limit 250 --max-results 100 --start-time "2019-01-28" --end-time "2019-01-30" "vegan OR plant-based OR plant based OR veganism --geocode 51.507351,-0.127758,10mi -is:retweet" data10.jsonl
 
+# new search structure
+twarc2 search --archive --start-time "2019-01-01" --end-time "2019-01-30" '(vegan OR plant-based OR "plant based" OR veganism) point_radius:[-0.127758 51.507351 5mi]' londonGeoPointRadius.jsonl
+twarc2 search --archive --start-time "2019-01-01" --end-time "2019-01-30" '(vegan OR plant-based OR "plant based" OR veganism) place:london' londonGeoPlace.jsonl
+twarc2 search --archive --start-time "2019-01-01" --end-time "2019-01-30" '(vegan OR plant-based OR "plant based" OR veganism) point_radius:[-2.242631 53.480759 5mi]' manchesterGeoPointRadius.jsonl
+twarc2 search --archive --start-time "2019-01-01" --end-time "2019-01-30" '(vegan OR plant-based OR "plant based" OR veganism) place:manchester' manchesterGeoPlace.jsonl
+twarc2 search --archive --start-time "2019-01-01" --end-time "2019-01-30" '(vegan OR plant-based OR "plant based" OR veganism) point_radius:[-2.703440 53.757729 5mi]' prestonGeoPointRadius.jsonl
+twarc2 search --archive --start-time "2019-01-01" --end-time "2019-01-30" '(vegan OR plant-based OR "plant based" OR veganism) place:preston' prestonGeoPlace.jsonl
+
+# convert jsonl to csv
+twarc2 csv londonGeoPointRadius.jsonl londonGeoPointRadius.csv
+twarc2 csv londonGeoPlace.jsonl londonGeoPlace.csv
+twarc2 csv manchesterGeoPointRadius.jsonl manchesterGeoPointRadius.csv
+twarc2 csv manchesterGeoPlace.jsonl manchesterGeoPlace.csv
+twarc2 csv prestonGeoPointRadius.jsonl prestonGeoPointRadius.csv
+twarc2 csv prestonGeoPlace.jsonl prestonGeoPlace.csv
 
 pip install twarc-csv
 twarc2 csv data.jsonl data.csv
