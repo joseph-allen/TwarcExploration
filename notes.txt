@@ -39,10 +39,25 @@ YYYY-MM-DD
 -is_retweet -RT
 https://twittercommunity.com/t/exclude-retweets-in-api-v2/156357/5
 
-twarc2 search --archive --max-results 100 --start-time "2019-01-01" --end-time "2019-01-3" "vegan OR plant-based OR plant based OR veganism -is:retweet --geocode 51.507351,-0.127758,10mi" data1.jsonl
+# get all tweets, january London
+twarc2 search --archive --max-results 100 --start-time "2019-01-01" --end-time "2019-01-30" "(vegan OR plant-based OR plant based OR veganism) -is:retweet --geocode 51.507351,-0.127758,10mi" data1.jsonl
+twarc2 csv data1.jsonl dataManchester.csv
 
-twarc2 search --archive --limit 250 --max-results 100 --start-time "2019-01-01" --end-time "2019-01-3" "vegan OR plant-based OR plant based OR veganism --geocode 51.507351,-0.127758,10mi -is:retweet" data1.jsonl
-twarc2 search --archive --limit 250 --max-results 100 --start-time "2019-01-04" --end-time "2019-01-6" "vegan OR plant-based OR plant based OR veganism --geocode 51.507351,-0.127758,10mi -is:retweet" data2.jsonl
+How much do people actually tweet?
+
+# get all tweets, january Preston 3 hours, about 1,200,000 just for 1 month of vegan tweets from Preston... file size?
+# Took about 32 hours with some hiccups, downloaded 1,187,582 Tweets (1.2 mill) this file is about 4.2 GB as well.
+twarc2 search --archive --max-results 100 --start-time "2019-01-01" --end-time "2019-01-30" "vegan OR plant-based OR plant based OR veganism -is:retweet --geocode 53.763208,-2.699540,3mi" dataPreston.jsonl
+
+# CSV conversion here took about 10 minutes luckily!
+twarc2 csv dataPreston.jsonl PrestonJan2019.csv
+
+# Processing took about 2 minutes to drop all retweets and replies. 37% of these tweets are original content.
+# Once tidied for our research question this file is only 135MB, too big to store on Github sadly.
+
+# get 250 tweets each three day period, london
+twarc2 search --archive --limit 250 --max-results 100 --start-time "2019-01-01" --end-time "2021-01-30" "(vegan OR plant-based OR plant based OR veganism) point_radius:[51.507351 -0.127758 25mi] -is:retweet" data1.jsonl
+twarc2 search --archive --limit 250 --max-results 100 --start-time "2019-01-04" --end-time "2019-01-6" "vegan OR plant-based OR plant based OR veganism --geocode 48.8566, 2.3522,10mi -is:retweet" data2.jsonl
 twarc2 search --archive --limit 250 --max-results 100 --start-time "2019-01-07" --end-time "2019-01-9" "vegan OR plant-based OR plant based OR veganism --geocode 51.507351,-0.127758,10mi -is:retweet" data3.jsonl
 twarc2 search --archive --limit 250 --max-results 100 --start-time "2019-01-10" --end-time "2019-01-12" "vegan OR plant-based OR plant based OR veganism --geocode 51.507351,-0.127758,10mi -is:retweet" data4.jsonl
 twarc2 search --archive --limit 250 --max-results 100 --start-time "2019-01-13" --end-time "2019-01-15" "vegan OR plant-based OR plant based OR veganism --geocode 51.507351,-0.127758,10mi -is:retweet" data5.jsonl
